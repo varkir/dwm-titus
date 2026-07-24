@@ -60,16 +60,25 @@ webapp   = "webapp-launch"
 keys = [
 
   # ── Launchers ────────────────────────────────────────────────────────────────
-  { mod="SUPER",            key="r",       desc="App launcher",            func="spawn",       cmd="quickshell ipc --path \"${XDG_CONFIG_HOME:-$HOME/.config}/quickshell/shell.qml\" call launcher toggle" },
-  { mod="SUPER",            key="x",       desc="Terminal",                func="spawn",       exec=["$terminal"] },
+  { mod="SUPER",            key="space",   desc="App launcher",            func="spawn",       cmd="quickshell ipc --path \"${XDG_CONFIG_HOME:-$HOME/.config}/quickshell/shell.qml\" call launcher toggle" },
+  { mod="SUPER",            key="t",       desc="Terminal",                func="spawn",       exec=["$terminal"] },
   { mod="SUPER",            key="w",       desc="Looking Glass (VM)",      func="spawn",       cmd="looking-glass-client -F" },
   { mod="SUPER SHIFT",      key="w",       desc="Randomize wallpaper",     func="spawn",       cmd="dwm-quickshell-controlcenter action reload-wallpaper" },
 
+  # ── The apps ─────────────────────────────────────────────────────────────────
+  { mod="SUPER",            key="o",       desc="Obsidian",                func="spawn",       exec=["obsidian"] },
+  { mod="SUPER",            key="v",       desc="KVM/Qemu",                func="spawn",       exec=["virt-manager"] },
+  { mod="SUPER",            key="z",       desc="Zeditor",                 func="spawn",       exec=["zeditor"] },
+  { mod="SUPER",            key="k",       desc="Kdenlive",                func="spawn",       exec=["kdenlive"] },
+  { mod="SUPER",            key="g",       desc="GIMP",                    func="spawn",       exec=["gimp"] },
+  { mod="SUPER",            key="r",       desc="OBS Studio",              func="spawn",       exec=["obs"] },
+  { mod="SUPER",            key="s",       desc="Steam",                   func="spawn",       exec=["steam"] },
+
   # ── Web apps ─────────────────────────────────────────────────────────────────
-  { mod="SUPER",            key="a",       desc="ChatGPT",                 func="spawn",       exec=["$webapp", "https://chatgpt.com"] },
+  { mod="SUPER SHIFT",      key="a",       desc="ChatGPT",                 func="spawn",       exec=["$webapp", "https://chatgpt.com"] },
   { mod="SUPER SHIFT",      key="a",       desc="Gemini",                  func="spawn",       exec=["$webapp", "https://gemini.google.com/"] },
   { mod="SUPER SHIFT",      key="x",       desc="X/Twitter — new post",    func="spawn",       exec=["$webapp", "https://x.com/compose/post"] },
-  { mod="SUPER",            key="b",       desc="Browser",                 func="spawn",       exec=["dwm-default-apps", "open", "https://"] },
+  { mod="SUPER",            key="b",       desc="Browser",                 func="spawn",       exec=["firefox"] },
 
   # ── Screenshots ───────────────────────────────────────────────────────────────
   { mod="SUPER",            key="p",       desc="Screenshot (fullscreen)", func="spawn",       cmd="dwm-screenshot full" },
@@ -77,11 +86,11 @@ keys = [
   { mod="SUPER CTRL",       key="p",       desc="Screenshot area → clip",  func="spawn",       cmd="dwm-screenshot clip" },
 
   # ── Files & utilities ─────────────────────────────────────────────────────────
-  { mod="SUPER",            key="e",       desc="File manager",            func="spawn",       cmd="xdg-open ." },
+  { mod="SUPER",            key="e",       desc="File manager",            func="spawn",       cmd="thunar" },
   { mod="SUPER",            key="slash",   desc="Keybinds cheatsheet",     func="spawn",       cmd="quickshell ipc --path \"${XDG_CONFIG_HOME:-$HOME/.config}/quickshell/shell.qml\" call controlcenter openKeybinds" },
   { mod="SUPER",            key="F1",      desc="Control center",          func="spawn",       cmd="quickshell ipc --path \"${XDG_CONFIG_HOME:-$HOME/.config}/quickshell/shell.qml\" call controlcenter open" },
   { mod="SUPER ALT",        key="F1",      desc="Control center",          func="spawn",       cmd="quickshell ipc --path \"${XDG_CONFIG_HOME:-$HOME/.config}/quickshell/shell.qml\" call controlcenter open" },
-  { mod="SUPER SHIFT",      key="r",       desc="Restart Quickshell",      func="spawn",       cmd="dwm-quickshell-controlcenter action restart-quickshell" },
+  { mod="SUPER SHIFT",      key="r",       desc="Restart Quickshexdg-open .ll",      func="spawn",       cmd="dwm-quickshell-controlcenter action restart-quickshell" },
   { mod="SUPER CTRL",       key="r",       desc="Restart Proton/Steam",    func="spawn",       cmd="protonrestart" },
 
   # ── Volume  (no modifier — press the media key directly) ─────────────────────
@@ -94,29 +103,32 @@ keys = [
   { mod="",                 key="XF86MonBrightnessDown",  desc="Brightness -",  func="spawn",  cmd="brightnessctl set 10%-" },
 
   # ── Window focus & movement ───────────────────────────────────────────────────
-  { mod="SUPER",            key="j",       desc="Focus next window",       func="focusstack",  i=1 },
-  { mod="SUPER",            key="k",       desc="Focus prev window",       func="focusstack",  i=-1 },
-  { mod="SUPER SHIFT",      key="j",       desc="Move window down",        func="movestack",   i=1 },
-  { mod="SUPER SHIFT",      key="k",       desc="Move window up",          func="movestack",   i=-1 },
-  { mod="SUPER",            key="Return",  desc="Promote to master",       func="zoom" },
+  { mod="SUPER",            key="Right",   desc="Focus next window",       func="focusstack",  i=1 },
+  { mod="SUPER",            key="Left",    desc="Focus prev window",       func="focusstack",  i=-1 },
+  { mod="SUPER SHIFT",      key="Right",   desc="Move window down",        func="movestack",   i=1 },
+  { mod="SUPER SHIFT",      key="Left",    desc="Move window up",          func="movestack",   i=-1 },
+  { mod="SUPER SHIFT",      key="Return",  desc="Promote to master",       func="zoom" },
   { mod="SUPER",            key="Tab",     desc="Previous tag",            func="view" },
   { mod="SUPER",            key="q",       desc="Close window",            func="killclient" },
+  { mod="SUPER",            key="Page_Up",   desc="Previous workspace",      func="viewtoleft" },
+  { mod="SUPER",            key="Page_Down", desc="Next workspace",          func="viewtoright" },
+
 
   # ── Master / stack sizing ─────────────────────────────────────────────────────
-  { mod="SUPER",            key="i",       desc="Add to master",           func="incnmaster",  i=1 },
-  { mod="SUPER",            key="d",       desc="Remove from master",      func="incnmaster",  i=-1 },
-  { mod="SUPER",            key="h",       desc="Shrink master",           func="setmfact",    f=-0.05 },
-  { mod="SUPER",            key="l",       desc="Grow master",             func="setmfact",    f=0.05 },
-  { mod="SUPER SHIFT",      key="h",       desc="Cfact grow",              func="setcfact",    f=0.25 },
-  { mod="SUPER SHIFT",      key="l",       desc="Cfact shrink",            func="setcfact",    f=-0.25 },
-  { mod="SUPER SHIFT",      key="o",       desc="Cfact reset",             func="setcfact",    f=0.00 },
+  { mod="SUPER SHIFT",      key="Up",      desc="Add to master",           func="incnmaster",  i=1 },
+  { mod="SUPER SHIFT",      key="Down",    desc="Remove from master",      func="incnmaster",  i=-1 },
+  { mod="SUPER",            key="minus",   desc="Shrink master",           func="setmfact",    f=-0.05 },
+  { mod="SUPER",            key="equal",   desc="Grow master",             func="setmfact",    f=0.05 },
+  { mod="SUPER SHIFT",      key="minus",   desc="Cfact grow",              func="setcfact",    f=0.25 },
+  { mod="SUPER SHIFT",      key="equal",   desc="Cfact shrink",            func="setcfact",    f=-0.25 },
+  { mod="SUPER SHIFT",      key="0",       desc="Cfact reset",             func="setcfact",    f=0.00 },
 
   # ── Layouts  (0=tiling  1=floating  2=monocle) ───────────────────────────────
-  { mod="SUPER",            key="t",       desc="Tile layout",             func="setlayout",   layout_idx=0 },
-  { mod="SUPER",            key="f",       desc="Float layout",            func="setlayout",   layout_idx=1 },
-  { mod="SUPER",            key="m",       desc="Fullscreen",              func="fullscreen" },
-  { mod="SUPER SHIFT",      key="m",       desc="Toggle floating window",  func="togglefloating" },
-  { mod="SUPER",            key="space",   desc="Toggle float/tile",       func="togglefloating" },
+  { mod="SUPER CTRL",       key="t",       desc="Tile layout",             func="setlayout",   layout_idx=0 },
+  { mod="SUPER CTRL",       key="f",       desc="Float layout",            func="setlayout",   layout_idx=1 },
+  { mod="SUPER",            key="f",       desc="Fullscreen",              func="fullscreen" },
+  { mod="SUPER SHIFT",      key="f",       desc="Toggle floating window",  func="togglefloating" },
+  { mod="SUPER SHIFT",      key="t",       desc="Toggle float/tile",       func="togglefloating" },
   { mod="SUPER SHIFT",      key="y",       desc="Fake fullscreen",         func="togglefakefullscreen" },
   { mod="SUPER SHIFT",      key="b",       desc="Toggle bar",              func="togglebar" },
 
@@ -130,6 +142,7 @@ keys = [
   { mod="SUPER",            key="0",       desc="Show all tags",           func="view",        ui=-1 },
   { mod="SUPER SHIFT",      key="q",       desc="Quit dwm",                func="quit" },
   { mod="SUPER CTRL",       key="q",       desc="Power menu",              func="spawn",       cmd="quickshell ipc --path \"${XDG_CONFIG_HOME:-$HOME/.config}/quickshell/shell.qml\" call power toggle" },
+  { mod="SUPER CTRL SHIFT", key="q",       desc="Poweroff",                 func="spawn",       cmd="systemctl poweroff" },
   { mod="SUPER CTRL SHIFT", key="r",       desc="Reboot",                  func="spawn",       cmd="systemctl reboot" },
   { mod="SUPER CTRL SHIFT", key="s",       desc="Suspend",                 func="spawn",       cmd="systemctl suspend" },
 
